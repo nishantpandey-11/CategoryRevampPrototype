@@ -10,9 +10,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.self.categoryrevampprototype.R
+import com.self.categoryrevampprototype.ui.dashboard.adapter.CategoryAdapter
+import com.self.categoryrevampprototype.ui.dashboard.adapter.ViewPagerAdapter
+import com.self.categoryrevampprototype.ui.dashboard.model.categoryData
+import com.self.categoryrevampprototype.ui.dashboard.model.categoryList
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), Communicator {
 
     private lateinit var dashboardViewModel: DashboardViewModel
 
@@ -29,22 +33,15 @@ class DashboardFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val list = listOf(
-            "First Screen",
-            "Second Screen",
-            "Third Screen",
-            "Fourth Screen",
-            "Fifth Screen",
-            "Sixth Screen"
-        )
-
-        vp.adapter = ViewPagerAdapter(list)
+        vp.adapter = ViewPagerAdapter(categoryData, categoryList, this)
         TabLayoutMediator(tabs, vp) { tab, position ->
-            tab.text = list[position]
+            tab.text = categoryList[position].name
+
         }.attach()
 
-        val categoryAdapter = CategoryAdapter(list)
+        val categoryAdapter = CategoryAdapter(categoryList, this)
         rv_cat.adapter = categoryAdapter
+
 
         vp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -57,6 +54,7 @@ class DashboardFragment : Fragment() {
                 positionOffsetPixels: Int
             ) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                pageClickListener(View.VISIBLE)
             }
 
             override fun onPageScrollStateChanged(state: Int) {
@@ -65,11 +63,18 @@ class DashboardFragment : Fragment() {
 
         })
 
-
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
 
         })
 
 
+    }
+
+    override fun changePage(position: Int) {
+        vp.setCurrentItem(position, true)
+    }
+
+    override fun pageClickListener(visiblity: Int) {
+        rv_cat.visibility = visiblity
     }
 }

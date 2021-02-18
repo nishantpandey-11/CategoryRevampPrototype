@@ -14,12 +14,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_cat"
-            android:layout_width="150dp"
+            android:layout_width="@dimen/margin_150"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="6"
-            tools:listitem="@layout/item_recycler_view" />
+            tools:listitem="@layout/row_category" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp"

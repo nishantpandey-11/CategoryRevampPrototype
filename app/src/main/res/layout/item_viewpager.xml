@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:elevation="10dp">
+    android:layout_margin="@dimen/margin_10"
+    android:elevation="@dimen/elevation">
 
     <RelativeLayout
         android:id="@+id/container"
@@ -16,10 +17,32 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="@android:color/black"
-            android:textSize="32sp"
-            tools:text="item" />
+            android:layout_margin="@dimen/margin_30"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text_size_20sp"
+            tools:text="Mobile &amp; \nElectronics" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_2"
+            android:layout_below="@id/tvTitle"
+            android:layout_marginStart="@dimen/margin_20"
+            android:layout_marginEnd="@dimen/margin_20"
+            android:layout_marginBottom="@dimen/margin_20"
+            android:background="@color/colorAccent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_sub_cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_20"
+            android:layout_marginBottom="@dimen/margin_20"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="15"
+            tools:listitem="@layout/row_sub_category" />
 
 
     </RelativeLayout>
