@@ -30,11 +30,12 @@
             android:layout_marginStart="@dimen/margin_20"
             android:layout_marginEnd="@dimen/margin_20"
             android:layout_marginBottom="@dimen/margin_20"
+            android:layout_toStartOf="@id/rv_sub_cat_child"
             android:background="@color/colorAccent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_sub_cat"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/divider"
             android:layout_gravity="center"
@@ -44,6 +45,20 @@
             tools:itemCount="15"
             tools:listitem="@layout/row_sub_category" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/rv_sub_cat_child"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_50"
+            android:layout_marginEnd="@dimen/margin_20"
+            android:layout_marginBottom="@dimen/margin_20"
+            tools:itemCount="5"
+            tools:listitem="@layout/row_sub_category_child" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

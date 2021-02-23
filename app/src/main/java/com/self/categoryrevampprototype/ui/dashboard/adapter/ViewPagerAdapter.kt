@@ -3,10 +3,12 @@ package com.self.categoryrevampprototype.ui.dashboard.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.self.categoryrevampprototype.R
 import com.self.categoryrevampprototype.ui.dashboard.Communicator
 import com.self.categoryrevampprototype.ui.dashboard.model.CategoryModel
+import com.self.categoryrevampprototype.ui.dashboard.model.subCategoryChildMensFashion
 import com.self.categoryrevampprototype.ui.dashboard.model.subCategoryLargeAppliance
 import kotlinx.android.synthetic.main.item_viewpager.view.*
 
@@ -35,6 +37,17 @@ class ViewPagerAdapter(
                 categoryData.get(category) ?: subCategoryLargeAppliance,
                 communicator
             )
+            val childLayoutManager = GridLayoutManager(item.rv_sub_cat_child.context, 2)
+            item.rv_sub_cat_child.apply {
+                layoutManager = childLayoutManager
+                adapter = CategoryAdapter(subCategoryChildMensFashion, communicator)
+                /*addItemDecoration(
+                    RecyclerItemDecorator(
+                        resources.getDimension(R.dimen.padding_10dp).toInt(),
+                        true
+                    )
+                )*/
+            }
             item.tvTitle.setOnClickListener {
                 communicator.pageClickListener(View.GONE)
             }

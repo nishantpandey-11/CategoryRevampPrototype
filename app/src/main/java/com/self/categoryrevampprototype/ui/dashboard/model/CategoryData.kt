@@ -2,6 +2,7 @@ package com.self.categoryrevampprototype.ui.dashboard.model
 
 const val TYPE_CATEGORY = 0
 const val TYPE_SUB_CATEGORY = 1
+const val TYPE_SUB_CATEGORY_CHILD = 2
 
 val categoryData: Map<CategoryModel, List<CategoryModel>>
     get() = mapOf<CategoryModel, List<CategoryModel>>(
@@ -55,4 +56,12 @@ val subCategoryMensFashion = listOf(
     CategoryModel("Inner Wear", TYPE_SUB_CATEGORY),
     CategoryModel("Bags", TYPE_SUB_CATEGORY),
     CategoryModel("Watches", TYPE_SUB_CATEGORY)
+)
+
+val subCategoryChildMensFashion = listOf(
+    CategoryModel("Casual Shirt", TYPE_SUB_CATEGORY_CHILD),
+    CategoryModel("Shirt", TYPE_SUB_CATEGORY_CHILD),
+    CategoryModel("T-Shirt", TYPE_SUB_CATEGORY_CHILD),
+    CategoryModel("Jackets", TYPE_SUB_CATEGORY_CHILD),
+    CategoryModel("Blazers", TYPE_SUB_CATEGORY_CHILD)
 )

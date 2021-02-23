@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -44,9 +46,6 @@ class DashboardFragment : Fragment(), Communicator {
 
 
         vp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-            }
 
             override fun onPageScrolled(
                 position: Int,
@@ -55,10 +54,6 @@ class DashboardFragment : Fragment(), Communicator {
             ) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
                 pageClickListener(View.VISIBLE)
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
             }
 
         })
@@ -77,4 +72,16 @@ class DashboardFragment : Fragment(), Communicator {
     override fun pageClickListener(visiblity: Int) {
         rv_cat.visibility = visiblity
     }
+
+  /*  override fun onResume() {
+        super.onResume()
+        val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
+        supportActionBar?.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
+        supportActionBar?.show()
+    }*/
 }
